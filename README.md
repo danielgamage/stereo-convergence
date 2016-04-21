@@ -1,6 +1,6 @@
 # Convergence
 
-View stereoscopic images and videos
+2D javascript stereoscopic viewer.
 
 ## Installation
 
@@ -13,8 +13,6 @@ bower install --save convergence
 
 Convergence requires a container element with `data-stereoplayer` and two child elements for each eye, each with a corresponding `data-eye` attribute.
 
-The container element may use the `data-stereo-min` and `data-stereo-max` attributes to set the max crossover (min) and max divergence (max) as percentages of the image widths.
-
 ```
 <div data-stereoplayer data-stereo-min="-0.8" data-stereo-max="1.6">
 	<img data-eye="left" src="../../image-left" />
@@ -26,3 +24,29 @@ The container element may use the `data-stereo-min` and `data-stereo-max` attrib
 <link href="../bower_components/convergence/convergence.css" rel="stylesheet">
 <script src="../bower_components/convergence/convergence.js"></script>
 ```
+
+## Properties
+
+#### `data-stereoplayer`
+
+**Required**. Valueless attribute denotes container element to base image positioning from.
+
+#### `data-eye`
+
+**Required**. Attribute denotes elements (embedded media) to use for left / right eyes. Possible values are `left` and `right`.
+
+#### `data-stereo-min`
+
+_float_
+
+Default: `-1`
+
+Property adjusts the minimum divergence as a percentage.
+
+#### `data-stereo-max`
+
+_float_
+
+Default: `1`
+
+Property adjusts the maximum divergence as a percentage.

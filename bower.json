@@ -14,7 +14,11 @@
     "stereoscopic"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/danielgamage/convergence",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:danielgamage/convergence.git"
+  },
   "ignore": [
     "**/.*",
     "src",
