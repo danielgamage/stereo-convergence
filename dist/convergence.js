@@ -6,7 +6,7 @@ var playerHeight,
 	eyeLeft   = player.querySelector('[data-eye="left"]'),
 	eyeRight  = player.querySelector('[data-eye="right"]'),
 	outputs   = {
-		min : ( outMin ? outMin  : 0 ),
+		min : ( outMin ? outMin  : -1 ),
 		max : ( outMax ? outMax : 1 )
 	},
 	inputs = {

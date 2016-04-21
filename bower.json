@@ -1,6 +1,9 @@
 {
   "name": "convergence",
-  "main": "convergence.js",
+  "main": [
+      "convergence.js",
+      "convergence.css"
+  ],
   "authors": [
     "Daniel Gamage <hello@danielgamage.com>"
   ],

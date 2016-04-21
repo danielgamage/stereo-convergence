@@ -2,12 +2,12 @@
 	display: block;
 	position: relative;
 }
-[data-stereoplayer] img{
+[data-stereoplayer] [data-eye]{
 	position: relative;
 	max-width: 100%;
 	height: auto;
 }
-[data-stereoplayer] img[data-eye="right"]{
+[data-stereoplayer] [data-eye="right"]{
 	position: absolute;
 	top: 0;
 	opacity: 0.5;
