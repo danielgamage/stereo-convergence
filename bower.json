@@ -1,8 +1,8 @@
 {
-  "name": "convergence",
+  "name": "stereo-convergence",
   "main": [
-      "convergence.js",
-      "convergence.css"
+      "stereo-convergence.js",
+      "stereo-convergence.css"
   ],
   "authors": [
     "Daniel Gamage <hello@danielgamage.com>"
@@ -14,10 +14,10 @@
     "stereoscopic"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/danielgamage/convergence",
+  "homepage": "https://github.com/danielgamage/stereo-convergence",
   "repository": {
     "type": "git",
-    "url": "git@github.com:danielgamage/convergence.git"
+    "url": "git@github.com:danielgamage/stereo-convergence.git"
   },
   "ignore": [
     "**/.*",

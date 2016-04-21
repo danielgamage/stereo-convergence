@@ -1,4 +1,4 @@
-# Convergence
+# Stereo Convergence
 
 2D javascript stereoscopic viewer.
 
@@ -6,7 +6,7 @@
 
 #### Bower
 ```
-bower install --save convergence
+bower install --save stereo-convergence
 ```
 
 ## Usage
