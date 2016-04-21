@@ -1,0 +1,23 @@
+{
+  "name": "convergence",
+  "main": "convergence.js",
+  "authors": [
+    "Daniel Gamage <hello@danielgamage.com>"
+  ],
+  "description": "A simple stereoscopic viewer",
+  "moduleType": [],
+  "keywords": [
+    "3d",
+    "stereoscopic"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "src",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
