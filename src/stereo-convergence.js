@@ -44,10 +44,11 @@ function convert(input){
 
 getDimensions();
 window.onresize = getDimensions;
+
 player.addEventListener('mousemove', setPositions, false);
 player.addEventListener('touchmove', function (event) {
 	// prevent scrolling
-	e.preventDefault();
-	//use single touch as event
+	event.preventDefault();
+	// use single touch as event
 	setPositions(event.touches[0]);
 }, false);

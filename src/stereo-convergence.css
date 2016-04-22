@@ -1,17 +1,2 @@
-@use postcss-nested;
-@use cssnext;
-
-[data-stereoplayer]{
-	display: block;
-	position: relative;
-	& [data-eye]{
-		position: relative;
-		max-width: 100%;
-		height: auto;
-	}
-	& [data-eye="right"]{
-		position: absolute;
-		top: 0;
-		opacity: 0.5;
-	}
-}
+@use postcss-nested;@use cssnext;[data-stereoplayer]{display:block;position:relative;& [data-eye]{position:relative;max-width:100%;height:auto}& [data-eye=right]{position:absolute;top:0;opacity:.5}}
+/*# sourceMappingURL=../dist/stereo-convergence.css.map */
