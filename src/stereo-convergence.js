@@ -17,7 +17,7 @@ var playerHeight,
 function getDimensions(){
 	playerHeight  = player.clientHeight;
 	playerBox     = player.getBoundingClientRect();
-	player.offset = {
+	playerOffset = {
 		top: playerBox.top + document.body.scrollTop,
 		left: playerBox.left + document.body.scrollLeft
 	};
@@ -25,7 +25,7 @@ function getDimensions(){
 
 function setPositions(event){
 	// get position
-	var mY         = event.pageY - player.offset.top;
+	var mY         = event.pageY - playerOffset.top;
 	// convert to percentage of image height and clip to input min / max for touch dragging
 	var yAdjusted  = Math.max( Math.min( (mY / playerHeight), inputs.max ), inputs.min);
 	// convert to user-set range
