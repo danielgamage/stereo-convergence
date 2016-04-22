@@ -54,5 +54,6 @@ Property adjusts the maximum divergence as a percentage.
 ## TODO
 
 * handling of outside edges (image clipping)
-* theming?
+* additional theming?
 * js image loading to ensure proper timing of code that gets image dimensions
+* handle multiple instances of 
