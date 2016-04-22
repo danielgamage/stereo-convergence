@@ -14,7 +14,7 @@ var playerHeight,
 		min : 0
 	};
 
-var getDimensions = function(){
+function getDimensions(){
 	playerHeight  = player.clientHeight;
 	playerBox     = player.getBoundingClientRect();
 	player.offset = {
@@ -22,21 +22,32 @@ var getDimensions = function(){
 		left: playerBox.left + document.body.scrollLeft
 	};
 };
-getDimensions();
-window.onresize = getDimensions;
-player.onmousemove = function(event){
-	var mY = event.pageY - player.offset.top;
-	var yAdjusted = (mY / playerHeight);
-	var yConverted = convert(yAdjusted)
-	console.log("real: " + yAdjusted);
-	console.log("converted: " + yConverted);
+
+function setPositions(event){
+	// get position
+	var mY         = event.pageY - player.offset.top;
+	// convert to percentage of image height and clip to input min / max for touch dragging
+	var yAdjusted  = Math.max( Math.min( (mY / playerHeight), inputs.max ), inputs.min);
+	// convert to user-set range
+	var yConverted = convert(yAdjusted);
+	// move eyes in opposite directions
 	eyeLeft.style.transform  = "translateX(" + (-1 * yConverted) + "%)";
 	eyeRight.style.transform = "translateX(" + (yConverted) + "%)";
 };
 
-var convert = function(input){
+function convert(input){
 	var	inputRange  = (inputs.max - inputs.min);
 	var	outputRange = ( outputs.max - outputs.min );
 	var value       = ((input - inputs.min) / (inputs.max - inputs.min)) * (outputs.max - outputs.min) + outputs.min;
 	return value;
 };
+
+getDimensions();
+window.onresize = getDimensions;
+player.addEventListener('mousemove', setPositions, false);
+player.addEventListener('touchmove', function (event) {
+	// prevent scrolling
+	e.preventDefault();
+	//use single touch as event
+	setPositions(event.touches[0]);
+}, false);
