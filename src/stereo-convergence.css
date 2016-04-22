@@ -4,14 +4,14 @@
 [data-stereoplayer]{
 	display: block;
 	position: relative;
-	& img{
+	& [data-eye]{
 		position: relative;
 		max-width: 100%;
 		height: auto;
-		&[data-eye="right"]{
-			position: absolute;
-			top: 0;
-			opacity: 0.5;
-		}
+	}
+	& [data-eye="right"]{
+		position: absolute;
+		top: 0;
+		opacity: 0.5;
 	}
 }
