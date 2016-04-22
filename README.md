@@ -50,3 +50,9 @@ _float_
 Default: `1`
 
 Property adjusts the maximum divergence as a percentage.
+
+## TODO
+
+* handling of outside edges (image clipping)
+* theming?
+* js image loading to ensure proper timing of code that gets image dimensions
