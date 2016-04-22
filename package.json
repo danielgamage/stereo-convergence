@@ -6,9 +6,9 @@
   "dependencies": {},
   "devDependencies": {
     "cssnano": "^3.5.2",
-    "cssnext": "^1.8.4",
     "grunt-contrib-uglify": "^1.0.1",
-    "grunt-postcss": "^0.8.0"
+    "grunt-postcss": "^0.8.0",
+    "postcss-cssnext": "^2.5.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

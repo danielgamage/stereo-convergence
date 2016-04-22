@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         },
 
         processors: [
-          require('cssnext')({browsers: 'last 2 versions'}), // add vendor prefixes
+          require('postcss-cssnext')(), // add vendor prefixes
           require('cssnano')() // minify the result
         ]
       },
