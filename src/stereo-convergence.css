@@ -6,6 +6,8 @@
 		position: relative;
 		max-width: 100%;
 		height: auto;
+		backface-visibility: hidden;
+		will-change: transform;
 	}
 	& [data-eye="right"]{
 		position: absolute;
