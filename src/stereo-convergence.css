@@ -1,6 +1,7 @@
 [data-stereoplayer]{
 	display: block;
 	position: relative;
+	overflow: hidden;
 	& [data-eye]{
 		position: relative;
 		max-width: 100%;
