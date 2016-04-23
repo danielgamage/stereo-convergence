@@ -9,10 +9,21 @@ var playerHeight,
 		min : ( outMin ? outMin  : -1 ),
 		max : ( outMax ? outMax : 1 )
 	},
+	clip = ( player.getAttribute("data-stereo-clip") ? player.getAttribute("data-stereo-clip") : true ),
 	inputs = {
 		max : 1,
 		min : 0
 	};
+
+function clipImage(){
+	var percentageMax         = Math.max( Math.abs(outputs.min), Math.abs(outputs.max) );
+	var clipMargin            = ( -1 * percentageMax ) + "%";
+	var clipWidth             = ( percentageMax * 2 + 100) + "%";
+	eyeLeft.style.maxWidth    = clipWidth;
+	eyeLeft.style.marginLeft  = clipMargin;
+	eyeRight.style.maxWidth   = clipWidth;
+	eyeRight.style.marginLeft = clipMargin;
+};
 
 function getDimensions(){
 	playerHeight  = player.clientHeight;
@@ -24,7 +35,7 @@ function getDimensions(){
 };
 
 function setPositions(event){
-	if (playerHeight == 0) {
+	if (playerHeight == player.clientHeight) {
 		getDimensions();
 		return;
 	}
@@ -48,6 +59,10 @@ function convert(input){
 
 getDimensions();
 window.onresize = getDimensions;
+
+if ( clip == true ) {
+	clipImage();
+}
 
 player.addEventListener('mousemove', setPositions, false);
 player.addEventListener('touchmove', function (event) {

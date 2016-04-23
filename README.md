@@ -51,10 +51,17 @@ Default: `1`
 
 Property adjusts the maximum divergence as a percentage.
 
+#### `data-stereo-clip`
+
+_boolean_
+
+Default: `true`
+
+Extends the images by the maximum distance the images can shift from center during interaction (ie, the largest absolute value between `data-stereo-min` and `data-stereo-max`), removing gaps from the edges of the stereoplayer during interaction.
+
 ## TODO
 
-* handling of outside edges (image clipping)
 * additional theming?
 * js image loading to ensure proper timing of code that gets image dimensions
 * handle multiple stereo-convergence instances
-* better indication of interactivity 
+* better indication of interactivity
