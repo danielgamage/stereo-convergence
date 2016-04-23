@@ -57,3 +57,4 @@ Property adjusts the maximum divergence as a percentage.
 * additional theming?
 * js image loading to ensure proper timing of code that gets image dimensions
 * handle multiple stereo-convergence instances
+* better indication of interactivity 
