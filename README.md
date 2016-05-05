@@ -68,3 +68,4 @@ Extends the images by the maximum distance the images can shift from center duri
 * handle multiple stereo-convergence instances
 * better indication of interactivity
 * support lazy loaded images
+* tests
