@@ -67,3 +67,4 @@ Extends the images by the maximum distance the images can shift from center duri
 * js image loading to ensure proper timing of code that gets image dimensions
 * handle multiple stereo-convergence instances
 * better indication of interactivity
+* support lazy loaded images
