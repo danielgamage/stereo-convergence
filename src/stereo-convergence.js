@@ -17,6 +17,7 @@ var Convergence = function(player){
 		min : 0
 	};
 
+	// Initialization
 	this.init = function () {
 		_this.bindEvents();
 
@@ -29,8 +30,8 @@ var Convergence = function(player){
 		window.onresize = _this.getDimensions();
 	};
 
+	// Event Binding
 	this.bindEvents = function () {
-		// Bind events
 		this.player.addEventListener('mousemove', function (event) {
 			_this.setPositions(this, event);
 		}, false);
@@ -42,6 +43,7 @@ var Convergence = function(player){
 		}, false);
 	};
 
+	// Image Overflow Clipping
 	this.clipImage = function (){
 		var percentageMax         = Math.max( Math.abs(this.outputs.min), Math.abs(this.outputs.max) );
 		var clipMargin            = ( -1 * percentageMax ) + "%";
@@ -52,6 +54,7 @@ var Convergence = function(player){
 		this.eyeRight.style.marginLeft = clipMargin;
 	};
 
+	// Calculate Viewer Size and Position
 	this.getDimensions = function (){
 		_this.playerHeight  = _this.player.clientHeight;
 		_this.playerBox     = _this.player.getBoundingClientRect();
@@ -61,6 +64,7 @@ var Convergence = function(player){
 		};
 	};
 
+	// Set Positions
 	this.setPositions = function (player, event){
 		if (_this.playerHeight !== player.clientHeight) {
 			_this.getDimensions();
@@ -72,12 +76,12 @@ var Convergence = function(player){
 		var yAdjusted  = Math.max( Math.min( (mY / _this.playerHeight), _this.inputs.max ), _this.inputs.min);
 		// convert to user-set range
 		var yConverted = _this.convert(yAdjusted);
-		console.log(yConverted);
 		// move eyes in opposite directions
 		_this.eyeLeft.style.transform  = "translateX(" + (-1 * yConverted) + "%)";
 		_this.eyeRight.style.transform = "translateX(" + (yConverted) + "%)";
 	};
 
+	// Convert Pointer Values to Desired CSS Offsets
 	this.convert = function (input){
 		var	inputRange  = (_this.inputs.max - _this.inputs.min);
 		var	outputRange = ( _this.outputs.max - _this.outputs.min );
@@ -89,8 +93,10 @@ var Convergence = function(player){
 
 var players   = document.querySelectorAll('[data-stereoplayer]');
 var instances = [];
+
+// Loop over [data-stereoplayer] instances and initialize each as a stereoscopic viewer
 for (var i = 0; i < players.length; ++i) {
-	var player = players[i];  // Calling myNodeList.item(i) isn't necessary in JavaScript
+	var player = players[i];
 	instances[i] = new Convergence(player).init();
 
 }
