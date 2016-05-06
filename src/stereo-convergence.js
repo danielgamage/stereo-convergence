@@ -1,15 +1,11 @@
 var Convergence = function(player){
 	var _this         = this;
 	this.player       = player;
-	this.playerHeight = 0;
-	this.playerBox    = this.player.getBoundingClientRect();
-	this.outMin       = parseFloat(this.player.getAttribute("data-stereo-min"));
-	this.outMax       = parseFloat(this.player.getAttribute("data-stereo-max"));
 	this.eyeLeft      = this.player.querySelector('[data-eye="left"]');
 	this.eyeRight     = this.player.querySelector('[data-eye="right"]');
 	this.outputs      = {
-		min : ( this.outMin ? this.outMin  : -1 ),
-		max : ( this.outMax ? this.outMax : 1 )
+		min : ( parseFloat(this.player.getAttribute("data-stereo-min") ) !== null ) ? parseFloat(this.player.getAttribute("data-stereo-min")) : -1 ,
+		max : ( parseFloat(this.player.getAttribute("data-stereo-max") ) !== null ) ? parseFloat(this.player.getAttribute("data-stereo-max")) : 1
 	};
 	this.clip         = ( player.getAttribute("data-stereo-clip") ? player.getAttribute("data-stereo-clip") : true );
 	this.inputs       = {
