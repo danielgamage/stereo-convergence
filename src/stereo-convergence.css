@@ -4,12 +4,17 @@
 	overflow: hidden;
 	& [data-eye]{
 		position: relative;
-		max-width: 100%;
+
+		/* just in case it's in page styles */
+		max-width: none;
 		height: auto;
+
+		/* force gpu rendering */
 		backface-visibility: hidden;
 		will-change: transform;
 	}
 	& [data-eye="right"]{
+		/* overlay onto left image */
 		position: absolute;
 		top: 0;
 		opacity: 0.5;

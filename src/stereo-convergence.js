@@ -44,9 +44,9 @@ var Convergence = function(player){
 		var percentageMax         = Math.max( Math.abs(this.outputs.min), Math.abs(this.outputs.max) );
 		var clipMargin            = ( -1 * percentageMax ) + "%";
 		var clipWidth             = ( percentageMax * 2 + 100) + "%";
-		this.eyeLeft.style.maxWidth    = clipWidth;
+		this.eyeLeft.style.width       = clipWidth;
 		this.eyeLeft.style.marginLeft  = clipMargin;
-		this.eyeRight.style.maxWidth   = clipWidth;
+		this.eyeRight.style.width      = clipWidth;
 		this.eyeRight.style.marginLeft = clipMargin;
 	};
 
