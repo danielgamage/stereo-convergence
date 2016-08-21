@@ -1,8 +1,8 @@
 {
   "name": "stereo-convergence",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "simple js stereo viewer",
-  "main": "gruntfile.js",
+  "main": "dist/stereo-convergence.min.js",
   "dependencies": {},
   "devDependencies": {
     "cssnano": "^3.5.2",
@@ -11,13 +11,15 @@
     "postcss-cssnext": "^2.5.2"
   },
   "scripts": {
+    "build": "grunt uglify",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danielgamage/stereo-convergence.git"
   },
-  "author": "",
+  "author": "Daniel Gamage <hello@danielgamage.com> (https://danielgamage.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/danielgamage/stereo-convergence/issues"
