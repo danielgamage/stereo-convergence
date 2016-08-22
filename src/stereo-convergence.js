@@ -1,14 +1,14 @@
 var Convergence = function(player){
-	var _this         = this;
-	this.player       = player;
-	this.eyeLeft      = this.player.querySelector('[data-eye="left"]');
-	this.eyeRight     = this.player.querySelector('[data-eye="right"]');
-	this.outputs      = {
-		min : ( parseFloat(this.player.getAttribute("data-stereo-min") ) !== null ) ? parseFloat(this.player.getAttribute("data-stereo-min")) : -1 ,
-		max : ( parseFloat(this.player.getAttribute("data-stereo-max") ) !== null ) ? parseFloat(this.player.getAttribute("data-stereo-max")) : 1
+	var _this      = this;
+	this.player    = player;
+	this.eyeLeft   = this.player.querySelector('[data-eye="left"]');
+	this.eyeRight  = this.player.querySelector('[data-eye="right"]');
+	this.outputs   = {
+		min : parseFloat(this.player.getAttribute("data-stereo-min")) || -1,
+		max : parseFloat(this.player.getAttribute("data-stereo-max")) || 1
 	};
-	this.clip         = ( player.getAttribute("data-stereo-clip") ? player.getAttribute("data-stereo-clip") : true );
-	this.inputs       = {
+	this.clip      = player.getAttribute("data-stereo-clip") || true;
+	this.inputs    = {
 		max : 1,
 		min : 0
 	};
@@ -26,17 +26,25 @@ var Convergence = function(player){
 		window.onresize = _this.getDimensions();
 	};
 
+	this.handleClick = function (event) {
+		// prevent scrolling for touch
+		event.preventDefault();
+
+		moveEvent = (event.touches ? event.touches[0] : event);
+
+		// use single touch as event
+		_this.setPositions(moveEvent);
+	}
 	// Event Binding
 	this.bindEvents = function () {
-		this.player.addEventListener('mousemove', function (event) {
-			_this.setPositions(this, event);
-		}, false);
-		this.player.addEventListener('touchmove', function (event) {
-			// prevent scrolling
-			event.preventDefault();
-			// use single touch as event
-			_this.setPositions(this, event.touches[0]);
-		}, false);
+		this.player.addEventListener('mousemove', _this.handleClick, false);
+		this.player.addEventListener('touchmove', _this.handleClick, false);
+	};
+
+	// Event Unbinding
+	this.destroy = function () {
+		this.player.removeEventListener('mousemove', _this.handleClick);
+		this.player.removeEventListener('touchmove', _this.handleClick);
 	};
 
 	// Image Overflow Clipping
@@ -61,8 +69,8 @@ var Convergence = function(player){
 	};
 
 	// Set Positions
-	this.setPositions = function (player, event){
-		if (_this.playerHeight !== player.clientHeight) {
+	this.setPositions = function (event){
+		if (_this.playerHeight !== _this.player.clientHeight) {
 			_this.getDimensions();
 			return;
 		}
