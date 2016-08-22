@@ -1,14 +1,17 @@
-var StereoConvergence = function(player){
-	var _this      = this;
-	this.player    = player;
-	this.eyeLeft   = this.player.querySelector('[data-eye="left"]');
-	this.eyeRight  = this.player.querySelector('[data-eye="right"]');
-	this.outputs   = {
+var StereoConvergence = function(options){
+	var _this            = this,
+	    eyeLeftSelector  = options.eyeLeftSelector || '[data-eye="left"]',
+	    eyeRightSelector = options.eyeLeftSelector || '[data-eye="right"]';
+
+	this.player          = options.player;
+	this.eyeLeft         = this.player.querySelector(eyeLeftSelector);
+	this.eyeRight        = this.player.querySelector(eyeRightSelector);
+	this.outputs         = {
 		min : parseFloat(this.player.getAttribute("data-stereo-min")) || -1,
 		max : parseFloat(this.player.getAttribute("data-stereo-max")) || 1
 	};
-	this.clip      = player.getAttribute("data-stereo-clip") || true;
-	this.inputs    = {
+	this.clip            = options.clip || player.getAttribute("data-stereo-clip") || true;
+	this.inputs          = {
 		max : 1,
 		min : 0
 	};
@@ -23,7 +26,7 @@ var StereoConvergence = function(player){
 		}
 
 		_this.getDimensions();
-		window.onresize = _this.getDimensions();
+		window.addEventListener('resize', _this.getDimensions);
 	};
 
 	this.handleClick = function (event) {
@@ -81,6 +84,7 @@ var StereoConvergence = function(player){
 		// convert to user-set range
 		var yConverted = _this.convert(yAdjusted);
 		// move eyes in opposite directions
+		console.log(yConverted)
 		_this.eyeLeft.style.transform  = "translateX(" + (-1 * yConverted) + "%)";
 		_this.eyeRight.style.transform = "translateX(" + (yConverted) + "%)";
 	};
@@ -101,6 +105,6 @@ var instances = [];
 // Loop over [data-stereoplayer] instances and initialize each as a stereoscopic viewer
 for (var i = 0; i < players.length; ++i) {
 	var player = players[i];
-	instances[i] = new StereoConvergence(player).init();
+	instances[i] = new StereoConvergence({player: player}).init();
 
 }
