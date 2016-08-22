@@ -7,11 +7,13 @@
   "devDependencies": {
     "cssnano": "^3.5.2",
     "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.8.0",
     "postcss-cssnext": "^2.5.2"
   },
   "scripts": {
-    "build": "grunt uglify",
+    "clean": "rm -rf dist/*",
+    "build": "grunt build",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
