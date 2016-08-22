@@ -1,4 +1,4 @@
-var Convergence = function(player){
+var StereoConvergence = function(player){
 	var _this      = this;
 	this.player    = player;
 	this.eyeLeft   = this.player.querySelector('[data-eye="left"]');
@@ -101,6 +101,6 @@ var instances = [];
 // Loop over [data-stereoplayer] instances and initialize each as a stereoscopic viewer
 for (var i = 0; i < players.length; ++i) {
 	var player = players[i];
-	instances[i] = new Convergence(player).init();
+	instances[i] = new StereoConvergence(player).init();
 
 }
