@@ -7,7 +7,7 @@
 ## Installation
 
 #### npm
-```
+```bash
 npm install --save stereo-convergence
 ```
 
@@ -15,7 +15,7 @@ npm install --save stereo-convergence
 
 Convergence requires a container element with two child elements for each eye, each with some sort of unique identifier.
 
-```
+```html
 <div data-stereo-player data-stereo-min="-0.8" data-stereo-max="1.6" data-stereo-clip="true">
 	<img data-stereo-eye="left" src="../../image-left" />
 	<img data-stereo-eye="right" src="../../image-right" />
@@ -46,7 +46,7 @@ Convergence requires a container element with two child elements for each eye, e
 
 Or if you want to manage configuration in javascript, pass an `options` object:
 
-```
+```html
 <script>
 let globalOptions = {
 	left: '.stereo-convergence__eye--left',
@@ -92,11 +92,9 @@ _String_: CSS selector
 
 Two properties, `left` and `right`, denote a selector to query via `querySelector` within the player. **There should only be two eyes**.
 
-```
-eye: {
-  left: '[data-stereo-eye="left"]'
-  right: '[data-stereo-eye="right"]'
-}
+```js
+left: '[data-stereo-eye="left"]'
+right: '[data-stereo-eye="right"]'
 ```
 
 #### `min`
