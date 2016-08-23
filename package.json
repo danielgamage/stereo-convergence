@@ -15,7 +15,7 @@
     "clean": "rm -rf dist/*",
     "build": "grunt build",
     "preversion": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
