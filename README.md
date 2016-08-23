@@ -15,6 +15,8 @@ npm install --save stereo-convergence
 
 Convergence requires a container element with two child elements for each eye, each with some sort of unique identifier.
 
+#### Basic
+
 ```html
 <div data-stereo-player data-stereo-min="-0.8" data-stereo-max="1.6" data-stereo-clip="true">
 	<img data-stereo-eye="left" src="../../image-left" />
@@ -28,23 +30,20 @@ Convergence requires a container element with two child elements for each eye, e
 
 <script>
 	// select StereoConvergence containers
-	var stereoPlayers   = document.querySelectorAll('[data-stereo-player]')
+	var stereoPlayers   = document.querySelector('[data-stereo-player]')
 
-	var instances = []
+	// store instance in variable for further manipulation
+	var stereoPlayer = new StereoConvergence({player: stereoPlayers})
 
-	// NodeList → Array & loop through items
-	[...stereoPlayers].map((el, i) => {
+	// initialize instance
+	stereoPlayer.init()
 
-		// store instance in array for further manipulation
-		instances[i] = new StereoConvergence({player: el})
-
-		// initialize instance
-		instances[i].init()
-	})
 </script>
 ```
 
-Or if you want to manage configuration in javascript, pass an `options` object:
+But this may be an oversimplified example. If you have more than one player, you need to initialize for each element. You may also want to manage configuration in javascript. To do this, pass an `options` object:
+
+#### Advanced
 
 ```html
 <script>
@@ -57,6 +56,7 @@ let globalOptions = {
 let players   = document.querySelectorAll('.stereo-convergence')
 let instances = []
 
+// NodeList → Array & loop through items
 [...stereoPlayers].map((el, i) => {
 
 	let localOptions = {
@@ -66,7 +66,8 @@ let instances = []
 		max: data.players[i].max
 	}
 
-	// use the spread operator (...) to dump the two options objects into one object argument for StereoConvergence
+	// A. use the spread operator (...) to dump the two options objects into one object argument for StereoConvergence
+	// B. store each instance in an array for further manipulation
 	instances[i] = new StereoConvergence({...localOptions, ...globalOptions})
 	instances[i].init()
 })
@@ -77,9 +78,9 @@ let instances = []
 
 #### `player`
 
-_Object_: DOM element
+_Object_: DOM element | **Required**
 
-**Required**. Valueless attribute denotes container element to base image positioning from.
+Valueless attribute denotes container element to base image positioning from.
 
 #### `left`
 #### `right`
