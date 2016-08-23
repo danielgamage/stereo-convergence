@@ -6,57 +6,119 @@
 
 ## Installation
 
-#### Bower
+#### npm
 ```
-bower install --save stereo-convergence
+npm install --save stereo-convergence
 ```
 
 ## Usage
 
-Convergence requires a container element with `data-stereoplayer` and two child elements for each eye, each with a corresponding `data-eye` attribute.
+Convergence requires a container element with two child elements for each eye, each with some sort of unique identifier.
 
 ```
-<div data-stereoplayer data-stereo-min="-0.8" data-stereo-max="1.6" data-stereo-clip="true">
-	<img data-eye="left" src="../../image-left" />
-	<img data-eye="right" src="../../image-right" />
+<div data-stereo-player data-stereo-min="-0.8" data-stereo-max="1.6" data-stereo-clip="true">
+	<img data-stereo-eye="left" src="../../image-left" />
+	<img data-stereo-eye="right" src="../../image-right" />
 </div>
 
 ...
 
-<link href="../bower_components/convergence/convergence.css" rel="stylesheet">
-<script src="../bower_components/convergence/convergence.js"></script>
+<link href="../path/to/stereo-convergence/stereo-convergence.min.css" rel="stylesheet">
+<script src="../path/to/stereo-convergence/stereo-convergence.min.js"></script>
+
+<script>
+	// select StereoConvergence containers
+	var stereoPlayers   = document.querySelectorAll('[data-stereo-player]')
+
+	var instances = []
+
+	// NodeList → Array & loop through items
+	[...stereoPlayers].map((el, i) => {
+
+		// store instance in array for further manipulation
+		instances[i] = new StereoConvergence({player: el})
+
+		// initialize instance
+		instances[i].init()
+	})
+</script>
+```
+
+Or if you want to manage configuration in javascript, pass an `options` object:
+
+```
+<script>
+let globalOptions = {
+	left: '.stereo-convergence__eye--left',
+	right: '.stereo-convergence__eye--right',
+	clip: false
+}
+
+let players   = document.querySelectorAll('.stereo-convergence')
+let instances = []
+
+[...stereoPlayers].map((el, i) => {
+
+	let localOptions = {
+		// you can hypothetically fetch options dynamically
+		player: el,
+		min: data.players[i].min,
+		max: data.players[i].max
+	}
+
+	// use the spread operator (...) to dump the two options objects into one object argument for StereoConvergence
+	instances[i] = new StereoConvergence({...localOptions, ...globalOptions})
+	instances[i].init()
+})
+</script>
 ```
 
 ## Properties
 
-#### `data-stereoplayer`
+#### `player`
+
+_Object_: DOM element
 
 **Required**. Valueless attribute denotes container element to base image positioning from.
 
-#### `data-eye`
+#### `left`
+#### `right`
 
-**Required**. Attribute denotes elements (embedded media) to use for left / right eyes. Possible values are `left` and `right`.
+_String_: CSS selector
 
-#### `data-stereo-min`
+`left` Default: `'[data-stereo-eye="left"]'`
 
-_float_
+`right` Default: `'[data-stereo-eye="right"]'`
+
+Two properties, `left` and `right`, denote a selector to query via `querySelector` within the player. **There should only be two eyes**.
+
+```
+eye: {
+  left: '[data-stereo-eye="left"]'
+  right: '[data-stereo-eye="right"]'
+}
+```
+
+#### `min`
+
+_Number_: Float
 
 Default: `-1`
 
-Property adjusts the minimum divergence as a percentage.
+Property adjusts the minimum divergence as a percentage of the image width.
 
-#### `data-stereo-max`
+#### `max`
 
-_float_
+_Number_: Float
 
 Default: `1`
 
-Property adjusts the maximum divergence as a percentage.
+Property adjusts the maximum divergence as a percentage of the image width.
 
-#### `data-stereo-clip`
+#### `clip`
 
-_boolean_
+_Boolean_
 
 Default: `true`
 
-Extends the images by the maximum distance the images can shift from center during interaction (ie, the largest absolute value between `data-stereo-min` and `data-stereo-max`), removing gaps from the edges of the stereoplayer during interaction.
+Extends the images by the maximum distance the images can shift from center during interaction (ie, the largest absolute value between `min` and `max`), removing gaps from the edges of the stereo-player during interaction.
