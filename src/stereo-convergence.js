@@ -1,14 +1,10 @@
 var StereoConvergence = function (options) {
-	var _this       = this,
-			eyeSelector = {
-				left  : ( options.eye ? options.eye.left  : null ) || '[data-stereo-eye="left"]',
-				right : ( options.eye ? options.eye.right : null ) || '[data-stereo-eye="right"]'
-			};
+	var _this       = this;
 
 	this.player     = options.player || document.querySelector('[data-stereo-player]');
 	this.eye        = {
-		left  : this.player.querySelector(eyeSelector.left),
-		right : this.player.querySelector(eyeSelector.right)
+		left  : this.player.querySelector(options.left  || '[data-stereo-eye="left"]'),
+		right : this.player.querySelector(options.right || '[data-stereo-eye="right"]')
 	}
 	this.outputs    = {
 		min : parseFloat(this.player.getAttribute("data-stereo-min")) || -1,
