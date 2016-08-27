@@ -6,9 +6,11 @@
   "dependencies": {},
   "devDependencies": {
     "cssnano": "^3.5.2",
+    "grunt": "^1.0.1",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.8.0",
+    "grunt-umd": "^2.3.6",
     "postcss-cssnext": "^2.5.2"
   },
   "scripts": {
