@@ -7,13 +7,22 @@ module.exports = function (grunt) {
           annotation: 'dist/' // ...to the specified directory
         },
         processors: [
-          require('postcss-cssnext')(), // add vendor prefixes
-          require('cssnano')() // minify the result
+          require('postcss-cssnext')() // add vendor prefixes
         ]
       },
       dist: {
         src: 'src/stereo-convergence.css',
         dest: 'dist/stereo-convergence.css'
+      }
+    },
+    cssnano: {
+      options: {
+        sourcemap: false
+      },
+      dist: {
+        files: {
+          'dist/stereo-convergence.min.css': 'dist/stereo-convergence.css'
+        }
       }
     },
     uglify: {
@@ -53,7 +62,7 @@ module.exports = function (grunt) {
       },
       styles: {
         files: ['src/*.css'],
-        tasks: ['postcss'],
+        tasks: ['postcss', 'cssnano'],
         options: {
           spawn: false
         }
@@ -65,8 +74,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-umd')
   grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-cssnano')
 
-  grunt.registerTask('build', ['postcss', 'umd', 'uglify'])
+  grunt.registerTask('build', ['postcss', 'cssnano', 'umd', 'uglify'])
 
   grunt.registerTask('default', [
     'postcss',
