@@ -1,0 +1,14 @@
+{
+  "name": "stereo-convergence-example",
+  "version": "0.5.1",
+  "description": "an example of stereo-convergence",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "stereo-convergence": "^0.5.1"
+  }
+}

@@ -1,0 +1,31 @@
+/* @import external lib css */
+
+body{
+	line-height: 1.5;
+	background: #f7f7f7;
+}
+
+main {
+	margin: auto;
+	max-width: 640px;
+	max-width: 40rem;
+	padding: 32px;
+	padding: 2rem;
+	background: #fff;
+	min-height: 100vh;
+}
+
+[data-stereo-player] {
+  margin-bottom: 2rem;
+}
+
+img {
+  display: block;
+}
+
+@media (min-width: 600px) {
+
+	main{
+		padding: 4rem;
+	}
+}
