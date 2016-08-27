@@ -45,7 +45,6 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
   this.suggestRefresh = function () {
     // invalidate cache
     _this.shouldRefresh = true
-    console.log('ran')
   }
 
   // Event Binding
@@ -85,7 +84,6 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
 
   // Set Positions
   this.setPositions = function (event) {
-    console.log(_this.shouldRefresh)
     if (_this.shouldRefresh) {
       _this.getDimensions()
     }
