@@ -16,6 +16,7 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
     max: 1,
     min: 0
   }
+  this.shouldRefresh = false
 
   // Initialization
   this.init = function () {
@@ -27,7 +28,6 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
     }
 
     _this.getDimensions()
-    window.addEventListener('resize', _this.getDimensions)
   }
 
   // Event Handling
@@ -41,16 +41,27 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
     _this.setPositions(moveEvent)
   }
 
+  // Add Refresh Flag
+  this.suggestRefresh = function () {
+    // invalidate cache
+    _this.shouldRefresh = true
+    console.log('ran')
+  }
+
   // Event Binding
   this.bindEvents = function () {
     this.player.addEventListener('mousemove', _this.handleClick, false)
     this.player.addEventListener('touchmove', _this.handleClick, false)
+    window.addEventListener('resize', _this.suggestRefresh, false)
+    window.addEventListener('scroll', _this.suggestRefresh, false)
   }
 
   // Event Unbinding
   this.destroy = function () {
     this.player.removeEventListener('mousemove', _this.handleClick)
     this.player.removeEventListener('touchmove', _this.handleClick)
+    window.removeEventListener('resize', _this.suggestRefresh, false)
+    window.removeEventListener('scroll', _this.suggestRefresh, false)
   }
 
   // Image Overflow Clipping
@@ -68,20 +79,18 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
   this.getDimensions = function () {
     _this.playerHeight = _this.player.clientHeight
     _this.playerBox = _this.player.getBoundingClientRect()
-    _this.playerOffset = {
-      top: _this.playerBox.top + document.body.scrollTop,
-      left: _this.playerBox.left + document.body.scrollLeft
-    }
+    // revalidate the cache
+    _this.shouldRefresh = false
   }
 
   // Set Positions
   this.setPositions = function (event) {
-    if (_this.playerHeight !== _this.player.clientHeight) {
+    console.log(_this.shouldRefresh)
+    if (_this.shouldRefresh) {
       _this.getDimensions()
-      return
     }
     // get position
-    var mY = event.pageY - _this.playerOffset.top
+    var mY = event.clientY - _this.playerBox.top
     // convert to percentage of image height and clip to input min / max for touch dragging
     var yAdjusted = Math.max(Math.min((mY / _this.playerHeight), _this.inputs.max), _this.inputs.min)
     // convert to user-set range
