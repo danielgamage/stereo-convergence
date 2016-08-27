@@ -1,6 +1,6 @@
 {
   "name": "stereo-convergence",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "simple js stereo viewer",
   "main": "dist/stereo-convergence.min.js",
   "dependencies": {},
