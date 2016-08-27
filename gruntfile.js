@@ -1,10 +1,10 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   grunt.initConfig({
     postcss: {
       options: {
         map: {
-            inline: false, // save all sourcemaps as separate files...
-            annotation: 'dist/' // ...to the specified directory
+          inline: false, // save all sourcemaps as separate files...
+          annotation: 'dist/' // ...to the specified directory
         },
         processors: [
           require('postcss-cssnext')(), // add vendor prefixes
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
           // template: 'path/to/template.hbs', // optional, a template from templates subdir
           // can be specified by name (e.g. 'umd'); if missing, the templates/umd.hbs
           // file will be used from [libumd](https://github.com/bebraw/libumd)
-          objectToExport: 'StereoConvergence', // optional, internal object that will be exported
+          objectToExport: 'StereoConvergence' // optional, internal object that will be exported
           // amdModuleId: 'id', // optional, if missing the AMD module will be anonymous
           // globalAlias: 'alias', // optional, changes the name of the global variable
           // deps: { // optional, `default` is used as a fallback for rest!
@@ -48,29 +48,29 @@ module.exports = function(grunt) {
         files: ['src/*.js'],
         tasks: ['umd', 'uglify'],
         options: {
-          spawn: false,
-        },
+          spawn: false
+        }
       },
       styles: {
         files: ['src/*.css'],
         tasks: ['postcss'],
         options: {
-          spawn: false,
-        },
-      },
-    },
-  });
+          spawn: false
+        }
+      }
+    }
+  })
 
-  grunt.loadNpmTasks('grunt-postcss');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-umd');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-postcss')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-umd')
+  grunt.loadNpmTasks('grunt-contrib-watch')
 
-  grunt.registerTask('build', ['postcss', 'umd', 'uglify']);
+  grunt.registerTask('build', ['postcss', 'umd', 'uglify'])
 
   grunt.registerTask('default', [
     'postcss',
     'umd',
     'uglify'
-  ]);
-};
+  ])
+}
