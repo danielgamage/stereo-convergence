@@ -11,13 +11,14 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.8.0",
     "grunt-umd": "^2.3.6",
-    "postcss-cssnext": "^2.5.2"
+    "postcss-cssnext": "^2.5.2",
+    "standard": "*"
   },
   "scripts": {
     "clean": "rm -rf dist/*",
     "build": "grunt build",
     "preversion": "npm run build",
-    "test": "echo \"Error: no test specified\""
+    "test": "standard --verbose './src/**/*.js' | snazzy"
   },
   "repository": {
     "type": "git",
