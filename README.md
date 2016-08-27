@@ -34,10 +34,10 @@ Convergence requires a container element with two child elements for each eye, e
 
 <script>
 	// select StereoConvergence containers
-	var stereoPlayers   = document.querySelector('[data-stereo-player]')
+	var playerEl = document.querySelector('[data-stereo-player]')
 
 	// store instance in variable for further manipulation
-	var stereoPlayer = new StereoConvergence({player: stereoPlayers})
+	var stereoPlayer = new StereoConvergence({player: playerEl})
 
 	// initialize instance
 	stereoPlayer.init()
@@ -57,11 +57,11 @@ let globalOptions = {
 	clip: false
 }
 
-let players   = document.querySelectorAll('.stereo-convergence')
+let playerEls = document.querySelectorAll('.stereo-convergence')
 let instances = []
 
 // NodeList → Array & loop through items
-[...stereoPlayers].map((el, i) => {
+[...playerEls].map((el, i) => {
 
 	let localOptions = {
 		// you can hypothetically fetch options dynamically
