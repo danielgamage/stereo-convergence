@@ -11,7 +11,15 @@
 
   <body>
     <main>
-    	<h2>Stereo Convergence</h2>
+      <header>
+        <nav>
+          <a href="https://github.com/danielgamage/stereo-convergence">GitHub</a>
+          |
+          <a href="https://www.npmjs.com/package/stereo-convergence">npm</a>
+        </nav>
+        <h2>StereoConvergence</h2>
+      </header>
+      <p>Mouse over the image to set the desired convergence point, or using a touch screen, grab and drag the image up or down to the desired convergence point.</p>
     	<div data-stereo-player data-stereo-min="-2" data-stereo-max="-1.5">
     		<img data-stereo-eye="left" src="img/2-1.jpg" alt="" width="1920" height="1080" />
     		<img data-stereo-eye="right" src="img/2-2.jpg" alt="" width="1920" height="1080" />
@@ -20,8 +28,9 @@
     		<img data-stereo-eye="left" src="img/1-1.jpg" alt="" width="1920" height="1080" />
     		<img data-stereo-eye="right" src="img/1-2.jpg" alt="" width="1920" height="1080" />
     	</div>
-    	<p>Mouse over the image to set the desired convergence point, or using a touch screen, grab and drag the image up or down to the desired convergence point.</p>
-    	<p></p>
+      <footer>
+        <p>StereoConvergence by <a href="https://danielgamage.com">Daniel Gamage</a></p>
+      </footer>
     </main>
 
     <script src="node_modules/stereo-convergence/dist/stereo-convergence.min.js"></script>
