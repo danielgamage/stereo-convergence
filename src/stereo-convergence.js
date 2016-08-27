@@ -23,8 +23,8 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
     _this.bindEvents()
 
     // Clip images if instructed
-    if (this.clip === true) {
-      this.clipImage()
+    if (_this.clip === true) {
+      _this.clipImage()
     }
 
     _this.getDimensions()
@@ -50,29 +50,29 @@ var StereoConvergence = function (options) { // eslint-disable-line no-unused-va
 
   // Event Binding
   this.bindEvents = function () {
-    this.player.addEventListener('mousemove', _this.handleClick, false)
-    this.player.addEventListener('touchmove', _this.handleClick, false)
+    _this.player.addEventListener('mousemove', _this.handleClick, false)
+    _this.player.addEventListener('touchmove', _this.handleClick, false)
     window.addEventListener('resize', _this.suggestRefresh, false)
     window.addEventListener('scroll', _this.suggestRefresh, false)
   }
 
   // Event Unbinding
   this.destroy = function () {
-    this.player.removeEventListener('mousemove', _this.handleClick)
-    this.player.removeEventListener('touchmove', _this.handleClick)
+    _this.player.removeEventListener('mousemove', _this.handleClick)
+    _this.player.removeEventListener('touchmove', _this.handleClick)
     window.removeEventListener('resize', _this.suggestRefresh, false)
     window.removeEventListener('scroll', _this.suggestRefresh, false)
   }
 
   // Image Overflow Clipping
   this.clipImage = function () {
-    var percentageMax = Math.max(Math.abs(this.outputs.min), Math.abs(this.outputs.max))
+    var percentageMax = Math.max(Math.abs(_this.outputs.min), Math.abs(_this.outputs.max))
     var clipMargin = (-1 * percentageMax) + '%'
     var clipWidth = (percentageMax * 2 + 100) + '%'
-    this.eye.left.style.width = clipWidth
-    this.eye.left.style.marginLeft = clipMargin
-    this.eye.right.style.width = clipWidth
-    this.eye.right.style.marginLeft = clipMargin
+    _this.eye.left.style.width = clipWidth
+    _this.eye.left.style.marginLeft = clipMargin
+    _this.eye.right.style.width = clipWidth
+    _this.eye.right.style.marginLeft = clipMargin
   }
 
   // Calculate Viewer Size and Position
