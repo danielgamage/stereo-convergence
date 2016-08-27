@@ -2,6 +2,10 @@
 
 # Stereo Convergence
 
+[![npm](https://img.shields.io/npm/v/stereo-convergence.svg?maxAge=864000)](https://www.npmjs.com/package/stereo-convergence)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/danielgamage/stereo-convergence/master/LICENSE.md)
+[![David](https://img.shields.io/david/dev/danielgamage/stereo-convergence.svg?maxAge=2592000)]()
+
 2D javascript stereoscopic viewer.
 
 ## Installation
